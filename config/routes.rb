@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   scope module: 'api', defaults: {format: 'json'} do
     namespace :v1 do
       # provide the routes for the API here
-      get 'shifts/:id', to: 'shifts#show'
+      get 'shifts/:id', to: 'shifts#show', as: :stores
       # resources :shifts
-      get 'employees', to: 'employees#index'
+      get 'employees', to: 'employees#index', as: :employees
       get 'stores/:id/:upcoming', to: 'stores#show'
       # resources :stores
       
