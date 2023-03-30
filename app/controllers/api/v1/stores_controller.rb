@@ -4,7 +4,7 @@ module Api::V1
     before_action :set_store, only: [:show, :update, :destroy]
     def show
       if params[:upcoming].present?
-        render json: StoreUpcomingSerializer.new(Shift.for_store(@store).upcoming.chronological)
+        render json: StoreUpcomingSerializer.new(Shift.for_store(@store).upcoming.chronological.alphabetical)
       else
         render json: @store
       end
