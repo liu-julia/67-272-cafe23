@@ -1,5 +1,6 @@
 class AssignmentEmployeeSerializer
   include FastJsonapi::ObjectSerializer
+  set_type :assignment
   attribute :store do |o| 
     o.store.name
   end
