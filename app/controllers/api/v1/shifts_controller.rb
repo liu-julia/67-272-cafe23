@@ -7,7 +7,8 @@ module Api::V1
     #   @shifts = Shift.all
     #   render json: @shifts
     # end
-      def show
+    def show
+      # render json: @shift
       render json: ShiftSerializer.new(@shift)
     end
 
