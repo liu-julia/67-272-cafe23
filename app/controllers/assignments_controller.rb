@@ -1,14 +1,14 @@
 class AssignmentsController < ApplicationController
     before_action :set_assignment, only: [:show, :edit, :update, :destroy]
-    #before_action :check_login
-    # authorize_resource
+    before_action :check_login
+    authorize_resource
     def index
         if current_user.role=="admin"
             @current_assignments = Assignment.current.chronological
             @past_assignments = Assignment.past.chronological
-        elsif current_user.role == "manager"
-            @current_assignments = current_user.current_assignment.store.assignments.current.chronological
-            @past_assignments = current_user.current_assignment.store.assignments.past.chronological
+        # elsif current_user.role == "manager"
+        #     @current_assignments = current_user.current_assignment.store.assignments.current.chronological
+        #     @past_assignments = current_user.current_assignment.store.assignments.past.chronological
         else
             @current_assignments = Assignment.for_employee(current_user).current.chronological
             @past_assignments = Assignment.for_employee(current_user).past.chronological
