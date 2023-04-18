@@ -56,7 +56,7 @@ class ShiftsController < ApplicationController
         if current_user.role == "employee"
             if !current_user.shifts.for_next_days(0).empty?
                 tc = TimeClock.new(current_user.shifts.chronological.upcoming.first)
-                tc.start_shift_at(Time.local(2000,1,1,(Time.now.hour),0,0,))
+                tc.start_shift_at(Time.now)
                 redirect_to home_path, notice: "Your shift has started."
             else
                 redirect_to home_path, notice: "You do not have any shifts today"
@@ -68,7 +68,7 @@ class ShiftsController < ApplicationController
         if current_user.role == "employee"
             if !current_user.shifts.for_next_days(0).empty?
                 tc2 = TimeClock.new(current_user.shifts.chronological.upcoming.first)
-                tc2.end_shift_at(Time.local(2000,1,1,(Time.now.hour),0,0,))
+                tc2.end_shift_at(Time.now)
                 redirect_to home_path, notice: "Your shift has ended."
             else
                 redirect_to home_path, notice: "You do not have any shifts today"

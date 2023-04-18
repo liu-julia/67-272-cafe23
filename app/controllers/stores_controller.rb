@@ -3,8 +3,8 @@ class StoresController < ApplicationController
     before_action :check_login
     authorize_resource
     def index
-        @active_stores = Store.active.alphabetical
-        @inactive_stores = Store.inactive.alphabetical
+        @active_stores = Store.active.alphabetical.paginate(page: params[:page]).per_page(10)
+        @inactive_stores = Store.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
     end
 
     def show

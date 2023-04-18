@@ -4,14 +4,14 @@ class AssignmentsController < ApplicationController
     authorize_resource
     def index
         if current_user.role=="admin"
-            @current_assignments = Assignment.current.chronological
-            @past_assignments = Assignment.past.chronological
+            @current_assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
+            @past_assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
         # elsif current_user.role == "manager"
         #     @current_assignments = current_user.current_assignment.store.assignments.current.chronological
         #     @past_assignments = current_user.current_assignment.store.assignments.past.chronological
         else
-            @current_assignments = Assignment.for_employee(current_user).current.chronological
-            @past_assignments = Assignment.for_employee(current_user).past.chronological
+            @current_assignments = Assignment.for_employee(current_user).current.chronological.paginate(page: params[:page]).per_page(10)
+            @past_assignments = Assignment.for_employee(current_user).past.chronological.paginate(page: params[:page]).per_page(10)
         end
     end
 

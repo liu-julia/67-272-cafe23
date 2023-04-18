@@ -1,8 +1,8 @@
 class PayrollsController < ApplicationController
     def store_form
-        if current_user.role == "employee"
-            redirect_to home_path
-        end
+        # if current_user.role == "employee"
+        #     redirect_to home_path
+        # end
     end
 
     def employee_form
