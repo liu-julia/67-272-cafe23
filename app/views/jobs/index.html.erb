@@ -1,0 +1,32 @@
+<h4> Jobs in Cafe23</h4>
+<% if @jobs.empty? %>
+  <h4>There are no jobs in the system at this time.</h4>
+<% else %>
+  <table class="striped highlight">
+    <thead>
+      <th>Name</th>
+      <th class="align_center">Options</th>
+    </thead>
+    <% for job in @jobs %>
+      <tr>
+        <td><%= job.name %></td>
+        <td class="align_center">
+          <%= link_to edit_job_path(job) do %>
+              <i class="material-icons">edit</i>
+          <% end %>
+          &nbsp;&nbsp;&nbsp;&nbsp; 
+          <%= link_to(job_path(job), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }) do %>
+              <i class="material-icons">delete</i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <br />
+  <%= will_paginate @jobs, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<% end %>
+<p>&nbsp;</p>
+<h4>Inactive Stores</h4>
+<p><strong>
+<%= link_to "Add a New Job", new_job_path, class: 'waves-effect waves-light btn' %> 
+</strong></p>

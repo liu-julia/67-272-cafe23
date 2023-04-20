@@ -2,31 +2,35 @@ html {
   // Preloaded with several fonts; uncomment the one you prefer
   // font-family: 'Helvetica Neue', sans-serif;
   // font-family: 'Roboto', sans-serif;
-  // font-family: 'Georgia', serif;// font-family: 'Nunito', sans-serif;
+  font-family: 'Georgia', serif;// font-family: 'Nunito', sans-serif;
   // font-family: 'Bitter', serif;
-  font-family: 'Josefin Sans', sans-serif;
+  //font-family: 'Josefin Sans', sans-serif;
   // font-family: 'Varela Round', sans-serif;
 }
 
 /********** TOPBAR & NAV ********/
 #topbar {
-  background-color: #000000;
+  background-color: #edd5d2;
   padding-top: 5px;
   margin-bottom: 0px;
-  color: #FFCB05;
+  color: #454545;
+  text-align: center;
 }
 
 #topbar a {
-  color: #FFCB05;
+  color: #454545;
+  text-align: center;
+  font-weight: 700;
 }
 
 #nav {
-  background-color: #000;
+  background-color: #edd5d2;
   height: 50px;
+  box-shadow: 0px 5px 5px #0000005d;
 }
 
 #nav ul a {
-  color: #FFCB05;
+  color: #454545;
   font-size: 1.2rem;
 }
 
@@ -55,17 +59,17 @@ html {
 /********** FOOTER ********/
 
 #footer {
-  background-color: #000000;
+  background-color: #edd5d2;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 0px;
-  color: yellow;
+  color: #7d5858;
   line-height: 2rem;
   position: relative;
 }
 
 #footer a {
-  color: #FFCB05;
+  color: #454545;
 }
 
 /********** TABLES ********/
@@ -74,11 +78,11 @@ table.striped > tbody > tr:nth-child(odd) {
 }
 
 table.striped > tbody > tr:nth-child(even) {
-  background-color: #fffde7;
+  background-color: #f9f4f4;
 }
 
 table.highlight > tbody > tr:hover {
-  background-color: #fff59d;
+  background-color: #f1e1eb;
 }
 
 td.align_right {
@@ -99,12 +103,16 @@ th.align_center {
 
 /********** BUTTONS ********/
 .btn {
-  background-color: #FFCB05;
+  background-color: #d7bcdc;
   color: #000;
 }
 
+.btn-long {
+  width: 500px;
+}
+
 .btn:hover {
-  background-color: #ffff00;
+  background-color: #c19ac8;
   color: #000;
 }
 
@@ -129,11 +137,11 @@ th.align_center {
 
 /********** FORMS ********/
 .switch label input[type=checkbox]:checked + .lever {
-  background-color: #ffea00;
+  background-color: #e0c2d7;
 }
 
 .switch label input[type=checkbox]:checked + .lever::after {
-  background-color: #FFCB05;
+  background-color: #d9acd3;
 }
 
 .picker__date-display {
@@ -153,22 +161,22 @@ input[type=text].search {
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
   border-radius: 50%;
   transform: scale(0.9);
-  background-color: #FFCB05;
+  background-color: #fbd4f6;
   color: #000;
 }
 
 .check_boxes.optional.filled-in {
-  background-color: #FFCB05;
+  background-color: #ffdceb;
 }
 
 [type="checkbox"].filled-in:checked+label:after {
-  border: 2px solid #FFCB05;
-  background-color: #FFCB05;
+  border: 2px solid #ffdceb;
+  background-color: #ffdceb;
 }
 
 [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
-  border: 2px solid #FFCB05;
-  background-color: #FFCB05;
+  border: 2px solid #ffdceb;
+  background-color: #ffdceb;
 }
 
 #form-template {
@@ -193,7 +201,7 @@ input[type=text].search {
 
 /********** CARDS ********/
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #ffab00;
+  color: #fec6ed;
 }
 
 .remove {
@@ -283,3 +291,7 @@ li.address {
     color: #4f4f4f; }
   .alert-box.alert-close {
     opacity: 0; }
+
+  [type=date] {
+    width: 100%
+  }

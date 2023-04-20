@@ -5,6 +5,7 @@ class JobsController < ApplicationController
     #before_action :check_login
     # authorize_resource
     def index
+        @jobs = Job.all.paginate(page: params[:page]).per_page(10)
     end
 
     def new

@@ -1,1 +1,65 @@
-<h2>Upcoming Shifts</h2>
+<h1 class="center-align">Welcome to Cafe23</h1>
+<div class="center-align">
+    <% if current_user && current_user.admin_role? %>
+        <%= link_to(employee_form_path) do %>
+            <div class="btn center-align btn-long"> Generate Employee Payroll Report </div>
+        <% end %>
+        <br>
+        <br>
+        <%= link_to(store_form_path) do %>
+            <button class="btn center-align btn-long"> Generate Store Payrolls </button>
+        <% end %>
+        <br>
+        <br>
+        <%= link_to(new_employee_path) do %>
+            <button class="btn center-align btn-long"> Add New Employee </button>
+        <% end %>
+    <% end %>
+
+    <% if current_user && current_user.manager_role? %>
+        <%= link_to(store_form_path) do %>
+            <button class="btn center-align btn-long"> Generate Store Payrolls </button>
+        <% end %>
+    <% end %>
+</div>
+<% if current_user && current_user.employee_role?%>
+    <h4>Upcoming Shifts at Cafe23</h4>
+    <% if @upcoming_shifts.nil? %>
+    <h4>There are no upcoming shifts in the system at this time.</h4>
+    <% else %>
+    <table class="striped highlight">
+        <thead>
+        <th>Store Name</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th class="align_center">Options</th>
+        </thead>
+        <% for shift in @upcoming_shifts %>
+        <tr>
+            <td><%= shift.assignment.store.name %></td>
+            <td><%= shift.date %></td>
+            <td><%= shift.start_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.end_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.status.capitalize %>
+            <td><%= shift.notes %></td>
+            <td class="align_center">
+            <% if shift.status == "pending"%>
+                <%= form_with url: time_in_path(), method: :patch do |f|%>
+                    <% f.submit "Start Shift", :class => "btn" %>
+                <% end %>
+            <% elsif shift.status == "started"%>
+                <%= form_with url: time_out_path(), method: :patch do |f|%>
+                    <% f.submit "End Shift", :class => "btn" %>
+                <% end %>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <br />
+    <%= will_paginate @upcoming_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+<% end %>

@@ -1,0 +1,37 @@
+<h5>Generate Store Payroll</h5>
+<% if current_user && current_user.admin_role? %>
+    <%= form_with url: store_payroll_path, method: :get do |form| %>
+        <div>
+        <%= form.label :store_id %>
+        <%= form.collection_select :store_id, Store.alphabetical.active, :id, :name, prompt: true %>
+        </div>
+
+        <div>
+        <%= form.label :start_date %>
+        <%= form.date_field :start_date %>
+        </div>
+
+        <div>
+        <%= form.label :end_date %>
+        <%= form.date_field :end_date %>
+        </div>
+
+    <%= form.submit "Generate Payroll", :class => "btn"%>
+    
+    <% end %>
+<% elsif current_user && current_user.manager_role? %>
+    <%= form_with url: store_payroll_path, method: :get do |form| %>
+        <div>
+        <%= form.label :start_date %>
+        <%= form.date_field :start_date %>
+        </div>
+
+        <div>
+        <%= form.label :end_date %>
+        <%= form.date_field :end_date %>
+        </div>
+
+    <%= form.submit "Generate Payroll", :class => "btn"%>
+    
+    <% end %>
+<% end %>

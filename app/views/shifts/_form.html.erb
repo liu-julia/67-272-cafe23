@@ -1,0 +1,23 @@
+<%= simple_form_for(@shift) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="form-inputs">
+      <% if current_user && current_user.admin_role?%>
+        <% label_method = proc { |p| "#{p.employee.name}" } %>
+        <%= f.input :assignment_id, collection: Assignment.by_employee, include_blank: true, label_method: label_method %>
+      <% end %>
+      <% if current_user && current_user.manager_role?%>
+        <% label_method = proc { |p| "#{p.employee.name}" } %>
+        <%= f.input :assignment_id, collection: Assignment.for_store(current_user.current_assignment.store).by_employee, include_blank: true, label_method: label_method %>
+      <% end %>
+      <%= f.input :date %>
+      <%= f.input :start_time, label_html: { class: 'active'} %>
+      <%= f.input :end_time, label_html: { class: 'active'}%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-actions col s8">
+      <%= f.submit "submit", :class => "btn" %>
+    </div>
+  </div>
+<% end %>

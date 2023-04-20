@@ -1,0 +1,16 @@
+<%= simple_form_for(@shift_job) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="form-inputs">
+      <% label_method = proc { |p| "#{p.employee.name} #{p.date}" } %>
+      <%= f.input :shift_id, collection: Shift.past.chronological, include_blank: true, label_method: label_method %>
+      <%#= f.input :shift_id, as: :hidden, input_html: { value: @shift.id } %>
+      <%= f.input :job_id, collection: Job.active.alphabetical, include_blank: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-actions col s8">
+      <%= f.submit "Submit", :class => 'btn' %>
+    </div>
+  </div>
+<% end %>

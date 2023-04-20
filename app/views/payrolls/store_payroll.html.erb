@@ -1,0 +1,21 @@
+<h4>Store Payroll Report</h4>
+<table class="striped highlight">
+    <thead>
+      <th>Employee Name</th>
+      <th>SSN</th>
+      <th>Current Pay Grade</th>
+      <th>Current Rate</th>
+      <th>Number of Hours Worked</th>
+      <th>Money Earned</th>
+    </thead>
+    <% for employee_payroll in @store_payroll %>
+        <tr>
+            <td><%= link_to "#{employee_payroll.employee_name}", employee_path(employee_payroll.employee) %></td>
+            <td><%= employee_payroll.ssn %></td>
+            <td><%= employee_payroll.pay_grade %></td>
+            <td><%= employee_payroll.pay_rate %></td>
+            <td><%= employee_payroll.hours %></td>
+            <td><%= employee_payroll.pay_earned %></td>
+        </tr>
+    <% end %>
+</table>

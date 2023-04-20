@@ -3,6 +3,16 @@ class ShiftsController < ApplicationController
     #before_action :check_login
     #authorize_resource
     def index
+        if current_user && current_user.employee_role?
+            @upcoming_shifts = Shift.for_employee(current_user).upcoming.chronological.paginate(page: params[:page]).per_page(10)
+            @past_shifts = Shift.for_employee(current_user).past.chronological.paginate(page: params[:page]).per_page(10)
+        elsif current_user && current_user.admin_role?
+            @upcoming_shifts = Shift.upcoming.chronological.paginate(page: params[:page]).per_page(10)
+            @past_shifts = Shift.past.chronological.paginate(page: params[:page]).per_page(10)
+        elsif current_user && current_user.manager_role?
+            @upcoming_shifts = Shift.for_store(current_user.current_assignment.store).upcoming.chronological.paginate(page: params[:page]).per_page(10)
+            @past_shifts = Shift.for_store(current_user.current_assignment.store).past.chronological.paginate(page: params[:page]).per_page(10)
+        end
     end
     
     def show

@@ -1,2 +1,119 @@
-<h2>Upcoming Shifts</h2>
-<h2>Completed Shifts</h2>
+<% if current_user && current_user.admin_role? || current_user.manager_role?%>
+    <h4>Upcoming Shifts at Cafe23</h4>
+    <% if @upcoming_shifts.nil? %>
+    <h4>There are no upcoming shifts in the system at this time.</h4>
+    <% else %>
+    <table class="striped highlight">
+        <thead>
+        <th>Employee Name</th>
+        <th>Store Name</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Notes</th>
+        <th class="align_center">Options</th>
+        </thead>
+        <% for shift in @upcoming_shifts %>
+        <tr>
+            <td><%= link_to "#{shift.assignment.employee.name}", employee_path(shift.assignment.employee) %></td>
+            <td><%= link_to "#{shift.assignment.store.name}", store_path(shift.assignment.store) %></td>
+            <td><%= shift.date %></td>
+            <td><%= shift.start_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.end_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.notes %></td>
+            <td class="align_center">
+            <%= link_to edit_shift_path(shift) do %>
+                <i class="material-icons">edit</i>
+            <% end %>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }) do %>
+                <i class="material-icons">delete</i>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <br />
+    <%= will_paginate @upcoming_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+    <p>&nbsp;</p>
+    <h4>Completed Shifts</h4>
+    <% if @past_shifts.nil? %>
+    <h4>There are no completed shifts in the system at this time.</h4>
+    <% else %>
+    <table class="striped highlight">
+        <thead>
+        <th>Employee Name</th>
+        <th>Store Name</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Notes</th>
+        <th class="align_center">Options</th>
+        </thead>
+        <% for shift in @past_shifts %>
+        <tr>
+            <td><%= link_to "#{shift.assignment.employee.name}", employee_path(shift.assignment.employee) %></td>
+            <td><%= link_to "#{shift.assignment.store.name}", store_path(shift.assignment.store) %></td>
+            <td><%= shift.date %></td>
+            <td><%= shift.start_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.end_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.notes %></td>
+            <td class="align_center">
+            <%= link_to new_shift_job_path() do %>
+                <i class="material-icons">add</i>
+            <% end %> 
+            <td class="align_center">
+            <%= link_to edit_shift_path(shift) do %>
+                <i class="material-icons">edit</i>
+            <% end %>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }) do %>
+                <i class="material-icons">delete</i>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <br />
+    <%= will_paginate @past_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+    <p><strong>
+    <%= link_to "Add a Shift", new_shift_path, class: 'waves-effect waves-light btn' %> 
+    </strong></p>
+<% elsif current_user && current_user.employee_role? %>
+<h4>Upcoming Shifts at Cafe23</h4>
+    <% if @upcoming_shifts.nil? %>
+    <h4>There are no upcoming shifts in the system at this time.</h4>
+    <% else %>
+    <table class="striped highlight">
+        <thead>
+        <th>Store Name</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Notes</th>
+        <th class="align_center">Options</th>
+        </thead>
+        <% for shift in @upcoming_shifts %>
+        <tr>
+            <td><%= shift.assignment.store.name %></td>
+            <td><%= shift.date %></td>
+            <td><%= shift.start_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.end_time.strftime("%I:%M %p") %></td>
+            <td><%= shift.notes %></td>
+            <td class="align_center">
+            <%= link_to time_in_path() do %>
+                <i class="material-icons">start shift</i>
+            <% end %>
+            <%= link_to time_out_path() do %>
+                <i class="material-icons">end shift</i>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <br />
+    <%= will_paginate @upcoming_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+<% end %>
