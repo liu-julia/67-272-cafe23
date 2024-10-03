@@ -3,13 +3,12 @@
 
 A project for CMU course 67-272: Application Design & Development, developing a full-stack web-app to allow a hypothetical cafe chain (Cafe23) manage stores, employees, shifts, payroll, and more.
 
-===
+
 
 **Instructions**
 
 To run, clone this repository locally to your machine. Run `rails db:context` and `rails server`. The web-app can be accessed at `localhost:3000/login`.
 
-===
 
 **User Accounts**
 
