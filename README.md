@@ -47,3 +47,7 @@ Alex logs in and chooses the payroll option for employees. He gets a form that a
 Alex logs in and chooses the payroll option for stores. He gets a form that allows him to choose the store he wants to calculate payroll for, as well as a start and end date that the payroll report will cover. After entering this information, he gets a report for the store and time period in question. This report provides in list form the payroll report for each employee who has a shift in the time period; the contents of the employee report match the requirements of the first scenario.
 
 Alex logs in and creates a new employee, Luke Skywalker. Once it is confirmed that Luke has been added to the system, he assigns Luke to the CMU store. Upon submission, he get appropriate feedback that the task has been correctly completed.
+
+**Dashboard UI**
+
+As a part of the last phase of this assignment, I designed but did not implement dashboards for this application. See here: https://www.figma.com/proto/tHXQqurXEDt6734P8sobwR/Cafe23-Dashboards?page-id=0%3A1&node-id=49-2361&node-type=frame&viewport=1888%2C320%2C0.45&t=CyQs6P6pY4D9u9jB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=49%3A4667
