@@ -37,7 +37,7 @@ Kathryn logs in to create a new shift for an employee. She gets a form that allo
 Kathryn logs in to record a job to a completed shift. In this case, she clicks on the first completed shift for Ralph Wilson. Seeing that Ralph worked the cashier job, she also adds the job of barista to the jobs Ralph completed that shift. Upon submission, she gets appropriate feedback that the task has been correctly completed.
 
 
-*Administrator*
+*Administrator:*
 
 username: alex
 password: secret
