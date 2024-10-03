@@ -50,4 +50,4 @@ Alex logs in and creates a new employee, Luke Skywalker. Once it is confirmed th
 
 **Dashboard UI**
 
-As a part of the last phase of this assignment, I designed but did not implement dashboards for this application. See here: https://www.figma.com/proto/tHXQqurXEDt6734P8sobwR/Cafe23-Dashboards?page-id=0%3A1&node-id=49-2361&node-type=frame&viewport=1888%2C320%2C0.45&t=CyQs6P6pY4D9u9jB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=49%3A4667
+As a part of the last phase of this assignment, I designed but did not implement dashboards for this application. See here: https://www.figma.com/proto/tHXQqurXEDt6734P8sobwR/Cafe23-Dashboards?page-id=0%3A1&node-id=49-4667&node-type=frame&viewport=1888%2C320%2C0.45&t=8itpOfpenLa4d4Ly-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=49%3A4667
